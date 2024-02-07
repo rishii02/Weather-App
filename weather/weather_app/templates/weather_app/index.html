@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Weather</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}"
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" placeholder="city1" name="city1">
+        <input type="text" placeholder="city2" name="city2">
+        <button type="submit">Compare Weather</button>
+    </form>
+
+    <div class="Compare Weather">
+        {% if w_data %}
+            <div class="city">
+                {% include 'weather_app/city.html' with w_data=w_data %}
+            </div>
+        {% endif %}
+        {% if w_data2 %}
+            <div class="city">
+                {% include 'weather_app/city.html' with w_data=w_data2 %}
+            </div>
+        {% endif %}
+
+
+    </div>
+</body>
+</html>
